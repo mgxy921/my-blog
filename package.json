@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "1.0.0-beta.7"
+  },
+  "dependencies": {
+    "@iminu/vitepress-plugin-auto-sidebar": "^1.0.3",
+    "glob": "^10.3.3",
+    "gray-matter": "^4.0.3",
+    "path": "^0.12.7",
+    "process": "^0.11.10",
+    "vite-plugin-vitepress-auto-sidebar": "^1.6.0",
+    "vue": "^3.2.36"
+  }
+}
