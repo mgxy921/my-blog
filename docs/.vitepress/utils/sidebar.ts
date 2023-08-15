@@ -4,7 +4,7 @@ import { glob } from "glob";
 import matter = require("gray-matter");
 export var RootDocsPath = "/docs";
 
-export function GetSibleItemByPath(DocsPath: string) {
+export function GetSibleItemByPath(DocsPath: string, test?: boolean) {
   let unixPath = path.posix.resolve("./");
 
   let fullDocsPath = path.posix.join(unixPath, RootDocsPath, DocsPath);

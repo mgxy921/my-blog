@@ -9,13 +9,13 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
-      // { text: "Examples", link: "/markdown-examples" },
       {
         text: "前端",
         items: [
+          { text: "HTML CSS", link: "/frontend/html_css/01 HTML简介.md" },
+          { text: "JavaScript", link: "/frontend/JavaScript/" },
           { text: "Vue", link: "/frontend/Vue/" },
           { text: "React", link: "/frontend/React/" },
-          { text: "JavaScript", link: "/frontend/JavaScript/" },
         ],
       },
       {
@@ -23,7 +23,6 @@ export default defineConfig({
         items: [
           { text: "Go", link: "/backend/go/" },
           { text: "Python", link: "/backend/Python/" },
-          // { text: "Item C", link: "/item-3" },
         ],
       },
       {
@@ -31,7 +30,6 @@ export default defineConfig({
         items: [
           { text: "RabbitMQ", link: "/middleware/" },
           { text: "Nginx", link: "/item-2" },
-          { text: "Item C", link: "/item-3" },
         ],
       },
       {
