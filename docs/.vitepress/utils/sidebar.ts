@@ -18,17 +18,21 @@ export function GetSibleItemByPath(DocsPath: string, test?: boolean) {
   items = files.map((file) => {
     return {
       name: path.basename(file),
-      text: matter.read(file).data.title,
+      text: matter.read(file).data.title || file.split(" ")[1].split(".")[0],
       link: path.posix.join(DocsPath, path.basename(file)),
     };
   });
 
   items.sort((a, b) => {
-    return a.name > b.name ? 1 : -1;
-    // return Number(a.name.split(" ")[0]) > Number(b.name.split(" ")[0]) ? 1 : -1;
+    // return a.name > b.name ? 1 : -1;
+    return Number(a.name.split(" ")[0]) > Number(b.name.split(" ")[0]) ? 1 : -1;
   });
 
   // console.log("files: ", files);
   // console.log("items: ", items);
+  if (test) {
+    console.log("files: ", files);
+    console.log("items: ", items);
+  }
   return items;
 }

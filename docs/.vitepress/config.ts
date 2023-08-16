@@ -29,7 +29,7 @@ export default defineConfig({
         text: "中间件",
         items: [
           { text: "RabbitMQ", link: "/middleware/" },
-          { text: "Nginx", link: "/item-2" },
+          { text: "Nginx", link: "/nginx" },
         ],
       },
       {
@@ -42,18 +42,13 @@ export default defineConfig({
       },
       {
         text: "Linux",
-        items: [
-          { text: "Item A", link: "/linux" },
-          { text: "Item B", link: "/item-2" },
-          { text: "Item C", link: "/item-3" },
-        ],
+        link: "/linux",
       },
       {
         text: "工具",
         items: [
-          { text: "git", link: "/git/" },
+          { text: "Git", link: "/git/01 起步.md" },
           { text: "Docker", link: "/Docker/01 Docker 简介.md" },
-          { text: "Item C", link: "/item-3" },
         ],
       },
     ],
