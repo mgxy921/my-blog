@@ -18,5 +18,13 @@ const MySidebar = {
       items: GetSibleItemByPath("/git", true),
     },
   ],
+  "/linux/": [
+    {
+      text: "Linux",
+      // collapsible: true,
+      collapsed: true,
+      items: GetSibleItemByPath("/linux"),
+    },
+  ],
 };
 export default MySidebar;

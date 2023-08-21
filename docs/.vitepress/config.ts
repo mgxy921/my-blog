@@ -42,7 +42,7 @@ export default defineConfig({
       },
       {
         text: "Linux",
-        link: "/linux",
+        link: "/linux/01 Linux 基础篇.md",
       },
       {
         text: "工具",
