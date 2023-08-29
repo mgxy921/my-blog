@@ -1,0 +1,152 @@
+---
+title: Linux 网络配置
+date: 2021-12-20 18:44:17
+
+
+---
+# Linux 网络配置
+
+## 画出原理图，帮助理解
+
+![01](./img/a9a6d3854c84afb5b3db1b5baa64e8f0_MD5.png)
+
+## 查看网络IP和网关
+
+### 查看虚拟网络编辑器和修改IP地址
+
+![02](./img/facc39edab1d05a3053b2e1f917323e9_MD5.png)
+
+### 查看网关
+
+![03](./img/392fb3b3b26f2cff489f57f0bb3b161f_MD5.png)
+
+## 查看windows环境中VMnet8网络配置
+
+指令:<font color=#DC4040 size=4 face="黑体">ipconfig</font>
+
+```shell
+ipconfig
+```
+
+### 查看Linux的网络配置
+
+指令:<font color=#DC4040 size=4 face="黑体">ifconfig</font>
+
+```shell
+ifconfig
+```
+
+## ping测试主机之间网络连通性
+
+### 基本语法
+
+<font color=#DC4040 size=4 face="黑体">ping 目的主机 (功能描述:测试当前服务器是否可以连接目的主机)</font>
+
+### 应用实例
+
+测试当前服务器是否可以连接百度
+
+ping www.baidu.com
+
+## Linux网络配置环境
+
+### 第一种方法(自动获取)
+
+说明:登陆后，通过界面的来设置自动获取ip，特点:**linux启动后会自动获取P,缺点是每次自动获取的ip地址可能不一样**。
+
+![06](./img/93e2364711839bb9bc7dbe38c6b4b63e_MD5.png)
+
+### 第二种方法(指定ip)
+
+说明:**直接修改配置文件来指定IP并可以连接到外网(程序员推荐)**
+
++ 编辑 <font color=#DC4040 size=4 face="黑体">vim /etc/sysconfig/network-scripts/ifcfg-ens33</font>
+
+要求: 将ip地址配置的静态的，比如: ip地址为192.168.197.200
+
+ifcfg-ens33 文件说明:
+
+
+
+DEVICE=eth0                                  #接口名（设备,网卡)
+
+HWADDR=O0:0C:2x:6x:Ox:xx     #MAC地址
+
+TYPE-Ethernet                              #网络类型（通常是Ethemet)
+
+UUID=926a57ba-92c6-4231-bacb-f27e5e6a9f44   #随机 id
+
+#系统启动的时候网络接口是否有效(yes/no)
+ONBOOT=yes
+#IP的配置方法[nonelstatic|bootpldhcp] (引导时不使用协议|静态分配IP|BOOTP协议|DHCP协议)
+
+**BOOTPROTO static**
+
+**#IP 地址**
+
+**IPADDR=192.168.197.200**
+
+**#网关**
+
+**GATEWAY=192.168.197.2**
+
+**#域名解析器**
+
+**DNS1=192.168.197.2**
+
++ 重启网络服务或者重启系统生效
+
+<font color=#DC4040 size=4 face="黑体">service network restart 或者   reboot</font>
+
+## 设置主机名和hosts映射
+
+### 设置主机名
+
+1. 为了方便记忆，可以给**linux系统设置主机名**，也可以根据需要修改主机名
+2. 指令<font color=#DC4040 size=4 face="黑体">hostname </font>:查看主机名
+3. 修改文件在<font color=#DC4040 size=4 face="黑体">/etc/hostname</font>指定
+
+> vim  /etc/hostname
+
+1. 修改后，**重启**生效
+
+### 设置hosts映射
+
+思考:如何通过主机名能够找到(比如ping)某个linux系统?
+
++ windows
+
+在<font color=#DC4040 size=4 face="黑体">C:\Windows\System32\drivers\etc\hosts</font>文件指定即可
+
+> 案例:192.168.197.200 mgxy
+
++ linux
+
+在 <font color=#DC4040 size=4 face="黑体">/etc/hosts </font>文件指定
+
+> 192.168.197.1 mgxycomputer
+
+## 主机名解析过程分析(Hosts、DNS)
+
+### Hosts
+
+一个文本文件，用来**记录IP和Hostname(主机名)**的映射关系
+
+### DNS
+
+**DNS**，就是 **Domain Name System**的缩写，翻译过来就是域名系统是互联网上作为域名和IP地址相互映射的一个**分布式数据库**
+
+### 应用案例
+
+1. 浏览器先检查浏览器缓存中有没有该域名解析IP地址，有就先调用这个IP完成解析;如果没有，就检查DNS解析器缓存，如果有直接返回IP完成解析。这两个缓存，可以理解为本地解析器缓存
+2. 一般来说，当电脑第一次成功访问某一网站后，在一定时间内，浏览器或操作系统会缓存他的IP地址(DNS解析记录）.如在cmd 窗口中输入
+
++ ipconfig /displaydns    //DNS域名解析缓存
++ ipconfig /flushdns        //手动清理dns缓存
+
+3. 如果本地解析器缓存没有找到对应映射，检查系统中 hosts文件中有没有配置对应的域名IP映射，如果有，则完成解析并返回。
+4. 如果本地DNS解析器缓存和 hosts文件中均没有找到对应的IP，则到域名服务DNS进行解析域
+5. 示意图
+
+![08](./img/34f5f0e05a624781eb41ae45919986e1_MD5.png)
+
