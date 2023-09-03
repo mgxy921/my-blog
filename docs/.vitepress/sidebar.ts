@@ -10,6 +10,14 @@ const MySidebar = {
       items: GetSibleItemByPath("/frontend/html_css/", true),
     },
   ],
+  "/frontend/Vue/": [
+    {
+      text: "Vue",
+      // collapsible: true,
+      collapsed: true,
+      items: GetSibleItemByPath("/frontend/Vue/", true),
+    },
+  ],
   "/git/": [
     {
       text: "git",

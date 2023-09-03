@@ -14,7 +14,7 @@ export default defineConfig({
         items: [
           { text: "HTML CSS", link: "/frontend/html_css/01 HTML简介.md" },
           { text: "JavaScript", link: "/frontend/JavaScript/" },
-          { text: "Vue", link: "/frontend/Vue/" },
+          { text: "Vue", link: "/frontend/Vue/00 MVVM模式.md" },
           { text: "React", link: "/frontend/React/" },
         ],
       },
