@@ -1,0 +1,42 @@
+---
+title: 使用animate库
+date: 2020-02-17 16:05:52
+
+
+---
+# vue中使用Animate.css库
+
+
+
+## 自定义过渡类名
+
+我们可以通过以下 attribute 来自定义过渡类名：
+
+- `enter-class`
+- `enter-active-class`
+- `enter-to-class` (2.1.8+)
+- `leave-class`
+- `leave-active-class`
+- `leave-to-class` (2.1.8+)
+<!-- more -->
+他们的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如 [Animate.css](https://daneden.github.io/animate.css/)结合使用十分有用。
+
+
+
+## 使用Animate.css库
+
+```html
+<transition
+            name="custom-classes-transition"
+            enter-active-class="animated tada"
+            leave-active-class="animated bounceOutRight"
+            >
+    <p v-if="show">hello</p>
+</transition>
+```
+
+按 [官方文档](https://github.com/daneden/animate.css) 引入Animate.css库，再配合vue的自定义过渡类名，指定`enter-active-class`和`leave-active-class`的自定义类，两者都要有`animated`类，用于说明其使用的是Animate.css库，再根据需求定义另外一个`动画类名`。
+
+动画类名：在 [Animate官网](https://daneden.github.io/animate.css/) 获取。
+
+
